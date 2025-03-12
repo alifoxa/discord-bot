@@ -12,7 +12,9 @@ Aplikácia na prevod jednotiek je kontajnerové riešenie, ktoré využíva Dock
   Tento skript nastaví prostredie vytvorením vyhradenej Docker siete a zostavením obrazov služieb pomocou príkazu `docker-compose build`.
 
 - **start-app.py**  
-  Tento skript spustí aplikáciu v odpojenom režime pomocou `docker-compose up -d` a automaticky otvorí predvolený webový prehliadač na zobrazenie aplikácie. **Prístup k aplikácii:** [http://localhost](http://localhost)
+  Tento skript spustí aplikáciu v odpojenom režime pomocou `docker-compose up -d` a automaticky otvorí predvolený webový prehliadač na zobrazenie aplikácie.
+
+- **Prístup k aplikácii:** [http://localhost](http://localhost)
 
 - **end-app.py**  
   Tento skript korektne zastaví aplikáciu vypnutím všetkých kontajnerov, odstránením Docker siete, vyčistením nepoužívaných Docker objemov a odstránením obrazov súvisiacich s projektom.
@@ -27,7 +29,7 @@ Aplikácia na prevod jednotiek je kontajnerové riešenie, ktoré využíva Dock
 - **backend/app.py**  
   Implementuje konverznú logiku pomocou Flasku. Tento súbor sa pripája k databáze PostgreSQL, číta konverzné údaje zo súboru JSON a nastavuje API koncové body pre interakciu s frontendom.
 
-- **Súbory frontendu**  
+- **frontend/...**  
   - **Dockerfile (v adresári frontend):** Zostavuje frontendovú aplikáciu na základe obrazu Nginx.
   - **index.html, styles.css, script.js:** Poskytujú kompletnú štruktúru, štýl a funkcionalitu používateľského rozhrania aplikácie.
 
