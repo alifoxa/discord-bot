@@ -1,6 +1,4 @@
-# README
-
-# Unit Converter
+# README | Unit Converter
 
 ## Popis projektu
 
