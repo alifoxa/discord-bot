@@ -30,7 +30,7 @@ Aplikácia na prevod jednotiek je kontajnerové riešenie, ktoré využíva Dock
   Implementuje konverznú logiku pomocou Flasku. Tento súbor sa pripája k databáze PostgreSQL, číta konverzné údaje zo súboru JSON a nastavuje API koncové body pre interakciu s frontendom.
 
 - **frontend/...**  
-  - **Dockerfile (v adresári frontend):** Zostavuje frontendovú aplikáciu na základe obrazu Nginx.
+  - **Dockerfile:** Zostavuje frontendovú aplikáciu na základe obrazu Nginx.
   - **index.html, styles.css, script.js:** Poskytujú kompletnú štruktúru, štýl a funkcionalitu používateľského rozhrania aplikácie.
 
 - **nginx/nginx.conf**  
@@ -60,4 +60,3 @@ Aplikácia na prevod jednotiek je kontajnerové riešenie, ktoré využíva Dock
    python end-app.py
    ```
    Tento príkaz ukončí bežiace kontajnery, odstráni Docker sieť a vyčistí objemy a obrazy spojené s aplikáciou.
-
