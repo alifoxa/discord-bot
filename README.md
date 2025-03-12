@@ -20,3 +20,15 @@ Projekt obsahuje nasledujúce komponenty:
 1. Pripravte aplikáciu spustením nasledujúceho príkazu v termináli:
    ```bash
    python prepare-app.py
+   ```
+2. Spustite aplikáciu pomocou príkazu:
+   ```bash
+   python start-app.py
+   ```
+3. Aplikácia bude dostupná vo webovom prehliadači na adrese: [http://localhost](http://localhost)
+
+## Ukončenie aplikácie
+Aplikáciu a jej zdroje môžete zastaviť a vyčistiť spustením nasledujúceho príkazu:
+   ```bash
+   python end-app.py
+   ```
