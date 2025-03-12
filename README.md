@@ -1,69 +1,44 @@
-# README | Unit Converter
+# Unit Converter Application Documentation
 
-## Popis projektu
+This documentation provides an overview of the Unit Converter Application, outlining its components and describing how to start the application and access it via a web browser.
 
-Tento projekt je webová aplikácia na konverziu jednotiek, ktorá je nasadená pomocou Dockeru a obsahuje frontend, backend a databázový server PostgreSQL. Frontend je postavený na Nginx, backend beží na Flask frameworku a PostgreSQL slúži ako úložisko.
+## Overview
 
-## Komponenty
+The Unit Converter Application is a containerized solution that leverages Docker to orchestrate multiple services. It uses a Flask-based backend for conversion logic, a frontend built with HTML/CSS/JavaScript for user interaction, and an Nginx reverse proxy for efficient routing. The application relies on a PostgreSQL database for persistence and data management.
 
-### 1. **Databáza**
+## Components
 
-- **Názov kontajnera:** `postgres_db`
-- **Obraz:** `postgres:latest`
-- **Porty:** Interné
-- **Popis:** Ukladá dáta o jednotkách a konverzných faktoroch
+- **prepare-app.py**  
+  This script sets up the environment by creating a dedicated Docker network and building the service images using `docker-compose build`.
 
-### 2. **Backend**
+- **start-app.py**  
+  This script launches the application in detached mode using `docker-compose up -d` and automatically opens the default web browser to display the application.  
+  **Access the Application:** [http://localhost](http://localhost)
 
-- **Názov kontajnera:** `backend`
-- **Obraz:** Vytvorený z `backend/Dockerfile`
-- **Porty:** `5000:5000`
-- **Popis:** REST API postavené na Flask frameworku, spracováva požiadavky na konverziu jednotiek
+- **end-app.py**  
+  This script gracefully stops the application by shutting down all containers, removing the Docker network, pruning unused Docker volumes, and cleaning up images related to the project.
 
-### 3. **Frontend**
+- **docker-compose.yml**  
+  Defines the multi-container application services:
+  - **postgres_db:** Hosts the PostgreSQL database required for data storage.
+  - **backend:** Runs the Flask server that contains the conversion logic and communicates with the database.
+  - **frontend:** Builds and serves the user interface. It includes the HTML, CSS, and JavaScript files that render the conversion interface.
+  - **nginx:** Acts as a reverse proxy server by routing incoming web requests to the appropriate backend service.
 
-- **Názov kontajnera:** `frontend`
-- **Obraz:** Vytvorený z `frontend/Dockerfile`
-- **Porty:** `80:80`
-- **Popis:** Používateľské rozhranie pre aplikáciu, obsluhované cez Nginx
+- **backend/app.py**  
+  Implements the conversion logic using Flask. This file connects to the PostgreSQL database, reads conversion data from a JSON file, and sets up API endpoints for the frontend to interact with.
 
-### 4. **Nginx**
+- **Frontend Assets**  
+  - **Dockerfile (in the frontend directory):** Builds the frontend application on top of the Nginx image.
+  - **index.html, styles.css, script.js:** Provide the complete structure, styling, and functionality for the application’s user interface.
 
-- **Názov kontajnera:** `nginx`
-- **Obraz:** `nginx:latest`
-- **Porty:** `8080:80`
-- **Popis:** Reverzný proxy server, smeruje požiadavky na frontend a backend
+- **nginx/nginx.conf**  
+  Configures the Nginx server to serve the static frontend content and act as a proxy for API requests to the backend.
 
-## Inštalácia a spustenie aplikácie
+## How to Run the Application
 
-1. **Príprava aplikácie:**
+1. **Prepare the Application:**
 
+   Run the preparation script to build the Docker images and set up the network:
    ```bash
    python prepare-app.py
-   ```
-
-   Tento krok vytvorí potrebnú Docker sieť a zostaví obrazy.
-
-2. **Spustenie aplikácie:**
-
-   ```bash
-   python start-app.py
-   ```
-
-   Tento krok spustí kontajnery na pozadí.
-
-3. **Prístup k aplikácii:**
-
-   - Aplikácia bude dostupná v prehliadači na adrese: [http://localhost](http://localhost)
-
-4. **Zastavenie aplikácie:**
-
-   ```bash
-   python end-app.py
-   ```
-
-   Tento krok zastaví všetky kontajnery a vyčistí Docker sieť a objemy.
-
-## Docker Compose
-
-Všetky služby sú definované v súbore `docker-compose.yml`. Používa sa `bridge` sieť `converter_network` pre komunikáciu medzi kontajnermi.
