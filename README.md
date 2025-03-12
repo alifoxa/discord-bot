@@ -26,7 +26,7 @@ Aplikácia na prevod jednotiek je kontajnerové riešenie, ktoré využíva Dock
   - **frontend:** Zostavuje a poskytuje používateľské rozhranie vrátane HTML, CSS a JavaScript súborov, ktoré zabezpečujú prevodné rozhranie.
   - **nginx:** Pôsobí ako reverzný proxy server, ktorý smeruje prichádzajúce webové požiadavky na príslušnú backendovú službu.
 
-- **backend/app.py**
+- **backend/...**
   - **app.py:** Implementuje konverznú logiku pomocou Flasku. Tento súbor sa pripája k databáze PostgreSQL, číta konverzné údaje zo súboru JSON a nastavuje API koncové body pre interakciu s frontendom.
   - **Dockerfile** Definuje obraz pre backend službu. Používa základný obraz Pythonu, inštaluje potrebné knižnice a spúšťa aplikáciu Flask.
   - **conversion_rates.json** Obsahuje konverzné faktory medzi rôznymi jednotkami, ktoré backend používa na výpočty. Tento súbor sa načítava pri štarte aplikácie.
