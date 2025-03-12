@@ -1,61 +1,62 @@
-# Unit Converter Application Documentation
+# Dokumentácia aplikácie na prevod jednotiek
 
-This documentation provides an overview of the Unit Converter Application, outlining its components and describing how to start the application and access it via a web browser.
+Táto dokumentácia poskytuje prehľad o aplikácii na prevod jednotiek, opisuje jej komponenty a vysvetľuje, ako aplikáciu spustiť a pristupovať k nej prostredníctvom webového prehliadača.
 
-## Overview
+## Prehľad
 
-The Unit Converter Application is a containerized solution that leverages Docker to orchestrate multiple services. It uses a Flask-based backend for conversion logic, a frontend built with HTML/CSS/JavaScript for user interaction, and an Nginx reverse proxy for efficient routing. The application relies on a PostgreSQL database for persistence and data management.
+Aplikácia na prevod jednotiek je kontajnerové riešenie, ktoré využíva Docker na orchestráciu viacerých služieb. Používa backend založený na Flasku na konverznú logiku, frontend postavený na HTML/CSS/JavaScripte na interakciu s používateľom a reverzný proxy server Nginx na efektívne smerovanie. Aplikácia sa spolieha na databázu PostgreSQL na uchovávanie a správu údajov.
 
-## Components
+## Komponenty
 
 - **prepare-app.py**  
-  This script sets up the environment by creating a dedicated Docker network and building the service images using `docker-compose build`.
+  Tento skript nastaví prostredie vytvorením vyhradenej Docker siete a zostavením obrazov služieb pomocou príkazu `docker-compose build`.
 
 - **start-app.py**  
-  This script launches the application in detached mode using `docker-compose up -d` and automatically opens the default web browser to display the application.  
-  **Access the Application:** [http://localhost](http://localhost)
+  Tento skript spustí aplikáciu v odpojenom režime pomocou `docker-compose up -d` a automaticky otvorí predvolený webový prehliadač na zobrazenie aplikácie.  
+  **Prístup k aplikácii:** [http://localhost](http://localhost)
 
 - **end-app.py**  
-  This script gracefully stops the application by shutting down all containers, removing the Docker network, pruning unused Docker volumes, and cleaning up images related to the project.
+  Tento skript korektne zastaví aplikáciu vypnutím všetkých kontajnerov, odstránením Docker siete, vyčistením nepoužívaných Docker objemov a odstránením obrazov súvisiacich s projektom.
 
 - **docker-compose.yml**  
-  Defines the multi-container application services:
-  - **postgres_db:** Hosts the PostgreSQL database required for data storage.
-  - **backend:** Runs the Flask server that contains the conversion logic and communicates with the database.
-  - **frontend:** Builds and serves the user interface. It includes the HTML, CSS, and JavaScript files that render the conversion interface.
-  - **nginx:** Acts as a reverse proxy server by routing incoming web requests to the appropriate backend service.
+  Definuje viac-kontajnerové aplikačné služby:
+  - **postgres_db:** Hosťuje databázu PostgreSQL potrebnú na ukladanie údajov.
+  - **backend:** Spúšťa Flask server, ktorý obsahuje konverznú logiku a komunikuje s databázou.
+  - **frontend:** Zostavuje a poskytuje používateľské rozhranie vrátane HTML, CSS a JavaScript súborov, ktoré zabezpečujú prevodné rozhranie.
+  - **nginx:** Pôsobí ako reverzný proxy server, ktorý smeruje prichádzajúce webové požiadavky na príslušnú backendovú službu.
 
 - **backend/app.py**  
-  Implements the conversion logic using Flask. This file connects to the PostgreSQL database, reads conversion data from a JSON file, and sets up API endpoints for the frontend to interact with.
+  Implementuje konverznú logiku pomocou Flasku. Tento súbor sa pripája k databáze PostgreSQL, číta konverzné údaje zo súboru JSON a nastavuje API koncové body pre interakciu s frontendom.
 
-- **Frontend Assets**  
-  - **Dockerfile (in the frontend directory):** Builds the frontend application on top of the Nginx image.
-  - **index.html, styles.css, script.js:** Provide the complete structure, styling, and functionality for the application’s user interface.
+- **Súbory frontendu**  
+  - **Dockerfile (v adresári frontend):** Zostavuje frontendovú aplikáciu na základe obrazu Nginx.
+  - **index.html, styles.css, script.js:** Poskytujú kompletnú štruktúru, štýl a funkcionalitu používateľského rozhrania aplikácie.
 
 - **nginx/nginx.conf**  
-  Configures the Nginx server to serve the static frontend content and act as a proxy for API requests to the backend.
+  Konfiguruje server Nginx na poskytovanie statického obsahu frontendu a funguje ako proxy pre API požiadavky na backend.
 
-## How to Run the Application
+## Ako spustiť aplikáciu
 
-1. **Prepare the Application:**
+1. **Príprava aplikácie:**
 
-   Run the preparation script to build the Docker images and set up the network:
+   Spustite prípravný skript na zostavenie Docker obrazov a nastavenie siete:
    ```bash
    python prepare-app.py
    ```
 
-2. **Start the Application:**
+2. **Spustenie aplikácie:**
 
-   Launch the application with:
+   Spustite aplikáciu pomocou:
    ```bash
    python start-app.py
    ```
-   After starting, the application will automatically open in your default web browser. If it does not open automatically, navigate manually to: [http://localhost](http://localhost)
+   Po spustení sa aplikácia automaticky otvorí vo vašom predvolenom webovom prehliadači. Ak sa neotvorí automaticky, manuálne prejdite na: [http://localhost](http://localhost)
 
-3. **Stop and Clean Up:**
+3. **Zastavenie a vyčistenie:**
 
-   When you wish to stop the application, run:
+   Ak chcete aplikáciu zastaviť, spustite:
    ```bash
    python end-app.py
    ```
-   This will terminate the running containers, remove the Docker network, and clean up volumes and images associated with the application.
+   Tento príkaz ukončí bežiace kontajnery, odstráni Docker sieť a vyčistí objemy a obrazy spojené s aplikáciou.
+
