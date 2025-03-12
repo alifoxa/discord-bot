@@ -1,5 +1,7 @@
 # README
 
+# Unit Converter
+
 ## Popis projektu
 
 Tento projekt je webová aplikácia na konverziu jednotiek, ktorá je nasadená pomocou Dockeru a obsahuje frontend, backend a databázový server PostgreSQL. Frontend je postavený na Nginx, backend beží na Flask frameworku a PostgreSQL slúži ako úložisko.
