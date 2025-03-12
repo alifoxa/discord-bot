@@ -74,7 +74,7 @@ Aplikácia na prevod jednotiek je kontajnerové riešenie, ktoré využíva Dock
    Tento príkaz ukončí bežiace kontajnery, odstráni Docker sieť a vyčistí objemy a obrazy spojené s aplikáciou.
 
 ## Pred začatím práce. Riešenie problému docker-compose
-Na vašom počítači musí byť nainštalovaný Python (odporúčaná je najnovšia verzia).
+Na vašom počítači musí byť nainštalovaný Docker a Python (odporúčaná je najnovšia verzia).
 
 ### Chyba s docker-compose:
 #### Inštalácia docker-compose
