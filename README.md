@@ -44,12 +44,20 @@ Aplikácia na prevod jednotiek je kontajnerové riešenie, ktoré využíva Dock
    ```bash
    python prepare-app.py
    ```
-
+   or
+   ```bash
+   python3 prepare-app.py
+   ```
+   
 2. **Spustenie aplikácie:**
 
    Spustite aplikáciu pomocou:
    ```bash
    python start-app.py
+   ```
+   or
+   ```bash
+   python3 start-app.py
    ```
    Po spustení sa aplikácia automaticky otvorí vo vašom predvolenom webovom prehliadači. Ak sa neotvorí automaticky, manuálne prejdite na: [http://localhost](http://localhost)
 
@@ -59,4 +67,38 @@ Aplikácia na prevod jednotiek je kontajnerové riešenie, ktoré využíva Dock
    ```bash
    python end-app.py
    ```
+   or
+   ```bash
+   python3 end-app.py
+   ```
    Tento príkaz ukončí bežiace kontajnery, odstráni Docker sieť a vyčistí objemy a obrazy spojené s aplikáciou.
+
+## Pred začatím práce. Riešenie problému docker-compose
+Na vašom počítači musí byť nainštalovaný Python (odporúčaná je najnovšia verzia).
+
+### Chyba s docker-compose:
+#### Inštalácia docker-compose
+Ak máte staršiu verziu Dockeru alebo docker-compose nie je nainštalovaný, skúste ho nainštalovať podľa nasledujúcich krokov:
+
+#### Pre Linux
+Stiahnite binárny súbor:
+ ```bash
+sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+```
+Udeľte oprávnenia na spustenie:
+```bash
+sudo chmod +x /usr/local/bin/docker-compose
+```
+Skontrolujte inštaláciu:
+```bash
+docker-compose --version
+```
+
+#### Pre macOS
+Použite Homebrew:
+```bash
+brew install docker-compose
+```
+
+#### Pre Windows
+Ak používate Docker Desktop, docker-compose by mal byť súčasťou balíka. Ak príkaz nefunguje, skúste preinštalovať Docker Desktop.
