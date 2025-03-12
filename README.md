@@ -1,4 +1,4 @@
-# Dokumentácia aplikácie na prevod jednotiek
+# Dokumentácia webovej aplikácie Unit Converter
 
 Táto dokumentácia poskytuje prehľad o aplikácii na prevod jednotiek, opisuje jej komponenty a vysvetľuje, ako aplikáciu spustiť a pristupovať k nej prostredníctvom webového prehliadača.
 
