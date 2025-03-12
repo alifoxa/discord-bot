@@ -35,7 +35,7 @@ Aplikácia na prevod jednotiek je kontajnerové riešenie, ktoré využíva Dock
 - **nginx/nginx.conf**  
   Konfiguruje server Nginx na poskytovanie statického obsahu frontendu a funguje ako proxy pre API požiadavky na backend.
 
-## Ako spustiť aplikáciu
+## Spustenie, zastavenie a vyčistenie webovej aplikácie
 
 1. **Príprava aplikácie:**
 
