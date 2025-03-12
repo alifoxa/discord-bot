@@ -1,44 +1,22 @@
-# Unit Converter Application Documentation
+# Dokumentácia pre Unit Converter
 
-This documentation provides an overview of the Unit Converter Application, outlining its components and describing how to start the application and access it via a web browser.
+## Komponenty projektu
+Projekt obsahuje nasledujúce komponenty:
+1. **Backend**:
+   - Flask aplikácia (`app.py`).
+   - Obsahuje konfiguračný súbor `Dockerfile` na vytvorenie backendu.
+   - Používa databázu PostgreSQL na spracovanie údajov.
+2. **Frontend**:
+   - Statická webová aplikácia s použitím HTML, CSS a JavaScriptu (`index.html`, `styles.css`, `script.js`).
+   - Obsahuje konfiguračný súbor `Dockerfile` na vytvorenie frontendu.
+3. **Databáza**:
+   - PostgreSQL databáza na uloženie údajov.
+4. **NGINX**:
+   - Reverzný proxy server na presmerovanie požiadaviek medzi frontend a backend.
+5. **Docker Compose**:
+   - `docker-compose.yml` súbor na koordináciu všetkých kontajnerov (frontend, backend, databáza, nginx).
 
-## Overview
-
-The Unit Converter Application is a containerized solution that leverages Docker to orchestrate multiple services. It uses a Flask-based backend for conversion logic, a frontend built with HTML/CSS/JavaScript for user interaction, and an Nginx reverse proxy for efficient routing. The application relies on a PostgreSQL database for persistence and data management.
-
-## Components
-
-- **prepare-app.py**  
-  This script sets up the environment by creating a dedicated Docker network and building the service images using `docker-compose build`.
-
-- **start-app.py**  
-  This script launches the application in detached mode using `docker-compose up -d` and automatically opens the default web browser to display the application.  
-  **Access the Application:** [http://localhost](http://localhost)
-
-- **end-app.py**  
-  This script gracefully stops the application by shutting down all containers, removing the Docker network, pruning unused Docker volumes, and cleaning up images related to the project.
-
-- **docker-compose.yml**  
-  Defines the multi-container application services:
-  - **postgres_db:** Hosts the PostgreSQL database required for data storage.
-  - **backend:** Runs the Flask server that contains the conversion logic and communicates with the database.
-  - **frontend:** Builds and serves the user interface. It includes the HTML, CSS, and JavaScript files that render the conversion interface.
-  - **nginx:** Acts as a reverse proxy server by routing incoming web requests to the appropriate backend service.
-
-- **backend/app.py**  
-  Implements the conversion logic using Flask. This file connects to the PostgreSQL database, reads conversion data from a JSON file, and sets up API endpoints for the frontend to interact with.
-
-- **Frontend Assets**  
-  - **Dockerfile (in the frontend directory):** Builds the frontend application on top of the Nginx image.
-  - **index.html, styles.css, script.js:** Provide the complete structure, styling, and functionality for the application’s user interface.
-
-- **nginx/nginx.conf**  
-  Configures the Nginx server to serve the static frontend content and act as a proxy for API requests to the backend.
-
-## How to Run the Application
-
-1. **Prepare the Application:**
-
-   Run the preparation script to build the Docker images and set up the network:
+## Štart aplikácie
+1. Pripravte aplikáciu spustením nasledujúceho príkazu v termináli:
    ```bash
    python prepare-app.py
